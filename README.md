@@ -18,7 +18,7 @@ This repo serves as a vault of experiments, notes, and implementations as I work
 ## 🗂️ Structure
 
 Each folder in the cave is themed around a cryptographic concept or protocol:
-- 🧪 Code (Python, Rust, or other languages)
+- 🧪 Code (Python, Sagemath, and hopefully Rust and other languages in the future)
 - 📚 Notes with math, diagrams, and intuition
 - 🔗 References to papers, standards, and books
 
