@@ -88,6 +88,7 @@
 We will explore **padding mechanisms, modes of operation, and practical implementations.**
 
 We should have in mind that:
+
 ✔ Messages are **split into fixed-size blocks** before encryption.  
 ✔ In this guide, **16 bytes will be the default block length**.  
 ✔ If the message is **larger than 16 bytes**, a **block cipher mode of operation** is required to handle multiple blocks securely.  
@@ -95,11 +96,11 @@ We should have in mind that:
 A small example is the following: when the message length is a multiple of the block length (= 112 bytes)
 
 
-![](image.png)
+![](images/image.png)
 
 Another example is when the message length is **not** a multiple of the block length (= 73 bytes)
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 # PKCS#7 Padding
 
@@ -270,13 +271,13 @@ Both encryption and decryption processes are fully parallelizable since each blo
 - **Pattern leakage:** ECB mode is insecure for structured or repetitive data. For example, encrypting images may preserve visual patterns, as shown below. The penguin shape remains visible even after encryption due to the repeated blocks being encrypted identically.
 
 
-  ![ECB Penguin Example](penguin.png)
+  ![ECB Penguin Example](images/penguin.png)
 
 - **Not semantically secure:** The deterministic nature of ECB fails to achieve semantic security (i.e., it cannot hide plaintext patterns in the ciphertext).
 
 More cryptographically now, below we can see the "internals" of ECB mode: 
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 > **Note:** The box labeled "block cipher encryption" in typical ECB diagrams represents a single invocation of the block cipher algorithm, such as AES.
 
@@ -380,7 +381,7 @@ Each block is encrypted **independently** using the same key:
 **Final ciphertext = C[0] || C[1]**
 
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 ## Another Python example 
 
@@ -508,7 +509,7 @@ CBC (Cipher Block Chaining) is a widely used block cipher mode that addresses th
 
 CBC mode solves the fundamental problem of ECB: the repetition of ciphertext for repeated plaintext blocks. This is done using a randomly generated **Initialization Vector (IV)**.
 
-![CBC Overview](image-5.png)
+![CBC Overview](images/image-5.png)
 
 ### What is an Initialization Vector (IV)?
 
@@ -632,7 +633,7 @@ As we can see:
 - Unpadding is required after decryption to remove the PKCS#7 padding.
 
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 
 ---
 
@@ -739,7 +740,7 @@ CFB transforms a block cipher into a **self-synchronizing stream cipher**, suita
 
 > CFB uses the block cipher to generate a keystream, turning the block cipher into a stream cipher.
 
-![CFB Diagram](cfb.png)
+![CFB Diagram](images/cfb.png)
 
 
 ## How CFB Works
@@ -914,7 +915,7 @@ OFB (Output Feedback) mode turns a block cipher into a **synchronous stream ciph
 
 > OFB uses the block cipher to create a **keystream** independent of the plaintext or ciphertext, just like a stream cipher.
 
-![OFB Mode Diagram](ofb.png)
+![OFB Mode Diagram](images/ofb.png)
 
 - Keystream blocks $y_i$ are generated independently of the message.
 - Message blocks are XORed with the keystream blocks for both encryption and decryption.
@@ -1050,7 +1051,7 @@ CTR (Counter) mode transforms a block cipher (like AES) into a **stream cipher**
 > CTR mode turns a block cipher into a **keystream generator**, much like a stream cipher.  
 > It encrypts a counter value (incremented for each block) and XORs the result with the plaintext or ciphertext.
 
-![CTR Mode Diagram](image-8.png)
+![CTR Mode Diagram](images/image-8.png)
 
 - The **nonce** acts like the Initialization Vector (IV).
 - The block cipher encrypts the nonce and counter value to produce a keystream.
