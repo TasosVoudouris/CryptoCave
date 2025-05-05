@@ -717,7 +717,7 @@ So to summarize,
 
 The following diagram illustrates the relationship between different types of liars under the three main probabilistic primality tests:
 
-![Liars for Fermat, Euler, and Miller–Rabin](liars.PNG)
+![Liars for Fermat, Euler, and Miller–Rabin](images/liars.PNG)
 
 As shown:
 
