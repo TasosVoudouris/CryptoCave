@@ -274,9 +274,8 @@ This step ensures further non-linearity and diffusion in the S-box.
 
 The full transformation of a byte \( A_i \) into its S-box output \( B_i \) is:
 
-\[
-A_i \xrightarrow{\text{Inverse in } GF(2^8)} B_i' \xrightarrow{\text{Affine transformation}} B_i
-\]
+$A_i \xrightarrow{\text{Inverse in } GF(2^8)} B_i' \xrightarrow{\text{Affine transformation}} B_i$
+
 
 This two-step process makes the AES S-box **non-linear**, **invertible**, and **resistant to cryptanalysis techniques** such as linear and differential attacks.
 
